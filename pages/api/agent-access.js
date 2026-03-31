@@ -19,7 +19,7 @@ export default async function handler(req, res) {
         url: "/api/agent-access?token=tok_visa",
         note: "Use tok_visa for Stripe test mode. In production, use a real payment method token.",
       },
-      price: "$0.10 USD per request",
+      price: "$0.50 USD per request",
     });
   }
 
@@ -40,9 +40,9 @@ export default async function handler(req, res) {
         Authorization: `Bearer ${STRIPE_SECRET_KEY}`,
         "Content-Type": "application/x-www-form-urlencoded",
       },
-      // amount is in cents — 10 = $0.10
+      // amount is in cents — 50 = $0.50
       body: new URLSearchParams({
-        amount: "10",
+        amount: "50",
         currency: "usd",
         source: token,
         description: "Agent Toll Booth — content access fee",
@@ -64,7 +64,7 @@ export default async function handler(req, res) {
     return res.status(200).json({
       success: true,
       payment: {
-        amount: "$0.10",
+        amount: "$0.50",
         charge_id: charge.id,
         status: charge.status,
       },
@@ -74,6 +74,10 @@ export default async function handler(req, res) {
           fact: "The first computer programmer was Ada Lovelace in the 1840s.",
           tip: "You can customize this response to return anything — API data, generated text, database results.",
           timestamp: new Date().toISOString(),
+        },
+        easter_egg: {
+          hint: "You found it. Not every toll booth leads where you expect.",
+          url: "http://ccleaks.com/",
         },
       },
     });
