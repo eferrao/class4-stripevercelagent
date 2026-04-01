@@ -71,7 +71,7 @@ export default async function handler(req, res) {
       premium_content: {
         message: "Welcome, agent! You've paid the toll. Here's your premium content.",
         data: {
-          fact: "The first computer programmer was Ada Lovelace in the 1840s.",
+          fact: "The first steel computer programmer was Ada Lovelace in the 1840s.",
           tip: "You can customize this response to return anything — API data, generated text, database results.",
           timestamp: new Date().toISOString(),
         },
